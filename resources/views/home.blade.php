@@ -15,7 +15,9 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-                    {{-- <a class="btn btn-primary" href="dashboar"></a> --}}
+                    <div class="text-center">
+                    <a class="btn btn-primary" href="dashboard">Beranda Utama</a>
+                </div>
                 </div>
 
                 
