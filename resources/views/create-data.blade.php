@@ -29,7 +29,36 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">BERANDA</h1>
+                    <h1 class="h3 mb-4 text-gray-800">USER's DATA</h1>
+                    
+                    <div class="card card-info card-outline">
+                        <div class="card-header">
+                        <h3>Tambah Data Pengguna</h3>    
+                    </div>
+                        <div class="card-body">
+                            <form action="{{ route('simpan-data') }}" method="post">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Pengguna">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="nim" name="nim" class="form-control" placeholder="NIM">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="role" name="role" class="form-control" placeholder="Role">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="status" name="status" class="form-control" placeholder="Status">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary" >Simpan Data</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->

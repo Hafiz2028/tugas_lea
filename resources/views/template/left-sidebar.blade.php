@@ -25,12 +25,11 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-            aria-controls="collapsePages">
+        <a class="nav-link" href="/data">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
+            <span>Data User</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
+        {{-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Login Screens:</h6>
@@ -42,7 +41,7 @@
                 <a class="collapse-item" href="404.html">404 Page</a>
                 <a class="collapse-item" href="blank.html">Blank Page</a>
             </div>
-        </div>
+        </div> --}}
     </li>
 
     <!-- Divider -->

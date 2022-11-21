@@ -29,7 +29,32 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">BERANDA</h1>
+                    <h1 class="h3 mb-4 text-gray-800">USER's DATA</h1>
+                    <div class="card card-info card-outline">
+                        <div class="card-header">
+                            <div class="card-tools">
+                                <a href="{{ route('create-data') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>NIM</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
