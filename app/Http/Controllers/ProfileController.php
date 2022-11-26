@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
-
-class UserController extends Controller
+class ProfileController extends Controller
 {
     protected $table = "users";
     protected $primaryKey = "id";
@@ -24,13 +23,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role=="Bendahara"){
-            return view ('forbidden');
-        }elseif (Auth::user()->role=="Admin"){
-
         $dtUser = User::all();
-        return view ('data-user',compact('dtUser'));
-        }
+        return view ('profile',compact('dtUser'));
     }
 
     /**
@@ -40,12 +34,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->role=="Bendahara"){
-            return view ('forbidden');
-        }elseif (Auth::user()->role=="Admin"){
-
         return view ('create-data');
-    }
     }
 
     /**
@@ -57,38 +46,14 @@ class UserController extends Controller
 
     protected function validator(array $nilai)
     {
-        if(Auth::user()->role=="Bendahara"){
-            return view ('forbidden');
-        }elseif (Auth::user()->role=="Admin"){
-
+        
         return Validator::make($nilai, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-    }
 
-
-    public function store(Request $nilai)
-    {
-        if(Auth::user()->role=="Bendahara"){
-            return view ('forbidden');
-        }elseif (Auth::user()->role=="Admin"){
-
-        User::create([
-            'name' => $nilai['name'],
-            'nim' => $nilai ['nim'],
-            'noanggota' => $nilai ['noanggota'],
-            'email' => $nilai['email'],
-            'password' => Hash::make($nilai['password']),
-            'notelpon' => $nilai ['notelpon'],
-            'role' => $nilai ['role'],
-            'status' => $nilai ['status']
-        ]);
-        return redirect ('data')->with('toast_success','Data Telah Diinputkan!');
-        }
-    }
 
     /**
      * Display the specified resource.
@@ -109,14 +74,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        if(Auth::user()->role=="Bendahara"){
-            return view ('forbidden');
-        }elseif (Auth::user()->role=="Admin"){
- 
+        // 
          $us = User::where('id','=', $id)->first();
         // dd($us);
         return view('edit-data',compact('us'));
-        }
     }
 
     /**
@@ -126,17 +87,45 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        if(Auth::user()->role=="Bendahara"){
-            return view ('forbidden');
-        }elseif (Auth::user()->role=="Admin"){
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . Auth::user()->id,
+            'current_password' => 'nullable|required_with:new_password',
+            'new_password' => 'nullable|min:8|max:12|required_with:current_password',
+            'password_confirmation' => 'nullable|min:8|max:12|required_with:new_password|same:new_password'
+        ]);
 
-        $us = User::findorfail($id);
-        $us->update($request->all());
-        return redirect ('data')->with('toast_success','Data Telah Di Ubah!');
+
+            $user = User::findOrFail(Auth::user()->id);
+            $user->name = $request->input('name');
+            $user->nim = $request->input('nim');
+            $user->noanggota = $request->input('noanggota');
+            $user->email = $request->input('email');
+            $user->notelpon = $request->input('notelpon');
+        
+
+        if (!is_null($request->input('current_password'))) {
+            if (Hash::check($request->input('current_password'), $user->password)) {
+                $user->password = Hash::make($request->input('new_password'));
+            } else {
+                return redirect()->back()->withInput();
+            }
         }
+
+        $user->save();
+        // return redirect ('welcome')->with('toast_success','Profil Telah Di Perbaharui!');
+        return redirect()->route('dashboard')->with('toast_success','Profil Telah Di Perbaharui!');
     }
+
+    //  public function update(Request $request, $id)
+    // {
+        
+    //     $us = User::findorfail($id);
+    //     $us->update($request->all());
+    //     return redirect ('data')->with('toast_success','Data Telah Di Ubah!');
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -144,15 +133,5 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        if(Auth::user()->role=="Bendahara"){
-            return view ('forbidden');
-        }elseif (Auth::user()->role=="Admin"){
-
-        $us = User::findorfail($id);
-        $us->delete();
-        return back()->with('info','Data Telah Dihapus!');;
-        // redirect ('data')->with('toast_success','Data Telah Di Ubah!');
-    }}
+    
 }

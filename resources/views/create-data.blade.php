@@ -57,11 +57,21 @@
                                     <input type="text" id="password" name="password" class="form-control" placeholder="Password" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="role" name="role" class="form-control" placeholder="Role" required>
+                                    <p>Role Anggota : </p>
+                                <input type="radio" name="role" value="Admin"
+                                size="17">Admin<br>
+                                <input type="radio" name="role" value="Bendahara"
+                                size="17">Bendahara<br>
                                 </div>
+                                
                                 <div class="form-group">
-                                    <input type="text" id="status" name="status" class="form-control" placeholder="Status" required>
+                                    <p>Status Anggota : </p>
+                                <input type="radio" name="status" value="Aktif"
+                                size="17">Aktif<br>
+                                <input type="radio" name="status" value="Nonaktif"size="17">Nonaktif<br>
                                 </div>
+
+                                
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary" >Simpan Data</button>
                                 </div>

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
     return view('welcome');
-});
+})->name('dashboard');
 
 Route::get('/data',[App\Http\Controllers\UserController::class,'index'])->name('data-user');
 Route::get('/tambah-data',[App\Http\Controllers\UserController::class,'create'])->name('create-data');
@@ -23,6 +23,8 @@ Route::post('/simpan-data',[App\Http\Controllers\UserController::class,'store'])
 Route::get('/edit-data/{id}',[App\Http\Controllers\UserController::class,'edit'])->name('edit-data');
 Route::post('/update-data/{id}',[App\Http\Controllers\UserController::class,'update'])->name('update-data');
 Route::get('/delete-data/{id}',[App\Http\Controllers\UserController::class,'destroy'])->name('delete-data');
+Route::get('/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('profile');
+Route::put('/profile',[App\Http\Controllers\ProfileController::class,'update'])->name('profile.update');
 
 Auth::routes();
 Route::get('/',[App\Http\Controllers\HomeController::class, 'index'])->name('home');

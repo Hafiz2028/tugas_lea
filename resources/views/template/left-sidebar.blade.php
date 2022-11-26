@@ -24,6 +24,9 @@
 
 
     <!-- Nav Item - Pages Collapse Menu -->
+    @if (Auth::user()->role=="Admin")
+        
+    
     <li class="nav-item">
         <a class="nav-link" href="/data">
             <i class="fas fa-fw fa-folder"></i>
@@ -43,7 +46,8 @@
             </div>
         </div> --}}
     </li>
-
+    @elseif (Auth::user()->role=="Bendahara")
+    @endif
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

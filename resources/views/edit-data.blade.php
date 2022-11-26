@@ -53,15 +53,43 @@
                                 <div class="form-group">
                                     <input type="email" id="email" name="email" class="form-control  @error ('email') is-invalid @enderror" placeholder="E-Mail" value="{{ $us->email }}" required>
                                 </div>
-                                {{-- <div class="form-group">
+                                {{-- 
                                     <input type="text" id="password" name="password" class="form-control" placeholder="Ganti Password" value="{{ $us->password }}" required>
-                                </div> --}}
+                                 --}}
+                                 <div class="form-group">
+                                    <p>Role Anggota : </p>
+                                <input type="radio" name="role" value="Admin"
+                                <?php echo ($us->role=="Admin")?'checked':'' ?>
+                                size="17">Admin<br>
+                                <input type="radio" name="role" value="Bendahara"
+                                <?php echo ($us->role=="Bendahara")?'checked':'' ?> size="17">Bendahara<br>
+                            </div>
+                                
                                 <div class="form-group">
+                                    <p>Status Anggota : </p>
+                                <input type="radio" name="status" value="Aktif"
+                                <?php echo ($us->status=="Aktif")?'checked':'' ?>
+                                size="17">Aktif<br>
+                                <input type="radio" name="status" value="Nonaktif"
+                                <?php echo ($us->status=="Nonaktif")?'checked':'' ?> size="17">Nonaktif<br>
+                            </div>
+                                
+                                    {{-- <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="status" name="status" value="Aktif">
+                                    <label class="form-check-label" for="Aktif">Aktif</label><br>
+                                
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="status" name="status" value="Nonaktif">
+                                    <label class="form-check-label" for="Nonaktif">Nonaktif</label><br>
+                                </div>
+                                    <input type="text" id="status" name="status" class="form-control" placeholder="Status" required>
+                                </div> --}}
+                                {{-- <div class="form-group">
                                     <input type="text" id="role" name="role" class="form-control" placeholder="Role" value="{{ $us->role }}" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" id="status" name="status" class="form-control" placeholder="Status" value="{{ $us->status }}" required>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary" >Ubah Data</button>
                                 </div>
