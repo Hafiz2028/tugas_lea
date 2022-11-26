@@ -33,37 +33,37 @@
                     
                     <div class="card card-info card-outline">
                         <div class="card-header">
-                        <h3>Tambah Data Pengguna</h3>    
+                        <h3>Edit Data Pengguna</h3>    
                     </div>
                         <div class="card-body">
-                            <form action="{{ route('simpan-data') }}" method="post">
+                            <form action="{{ url('update-data',$us->id) }}" method="post">
                                 {{ csrf_field() }}
                                 <div class="form-group">
-                                    <input type="text" id="name" name="name" class="form-control" placeholder="Nama Pengguna" required>
+                                    <input type="text" id="name" name="name" class="form-control" placeholder="Nama Pengguna" value="{{ $us->name }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="nim" name="nim" class="form-control" placeholder="NIM" required>
+                                    <input type="text" id="nim" name="nim" class="form-control" placeholder="NIM" value="{{ $us->nim }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="noanggota" name="noanggota" class="form-control" placeholder="Nomor Anggota" required>
+                                    <input type="text" id="noanggota" name="noanggota" class="form-control" placeholder="Nomor Anggota" value="{{ $us->noanggota }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="notelpon" name="notelpon" class="form-control" placeholder="Nomor HP" required>
+                                    <input type="text" id="notelpon" name="notelpon" class="form-control" placeholder="Nomor HP" value="{{ $us->notelpon }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" id="email" name="email" class="form-control  @error ('email') is-invalid @enderror" placeholder="E-Mail" required>
+                                    <input type="email" id="email" name="email" class="form-control  @error ('email') is-invalid @enderror" placeholder="E-Mail" value="{{ $us->email }}" required>
+                                </div>
+                                {{-- <div class="form-group">
+                                    <input type="text" id="password" name="password" class="form-control" placeholder="Ganti Password" value="{{ $us->password }}" required>
+                                </div> --}}
+                                <div class="form-group">
+                                    <input type="text" id="role" name="role" class="form-control" placeholder="Role" value="{{ $us->role }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="password" name="password" class="form-control" placeholder="Password" required>
+                                    <input type="text" id="status" name="status" class="form-control" placeholder="Status" value="{{ $us->status }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="role" name="role" class="form-control" placeholder="Role" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="status" name="status" class="form-control" placeholder="Status" required>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary" >Simpan Data</button>
+                                    <button type="submit" class="btn btn-primary" >Ubah Data</button>
                                 </div>
 
                             </form>
@@ -93,7 +93,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
+    {{-- <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -111,7 +111,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @include('template.script')
 </body>
 

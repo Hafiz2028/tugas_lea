@@ -29,45 +29,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">USER's DATA</h1>
-                    <div class="card card-info card-outline">
-                        <div class="card-header">
-                            <div class="card-tools">
-                                <a href="{{ route('create-data') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama</th>
-                                    <th>NIM</th>
-                                    <th>No Anggota</th>
-                                    <th>No HP</th>
-                                    <th>Role</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                @foreach ($dtUser as $us)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $us->name }}</td>
-                                    <td>{{ $us->nim }}</td>
-                                    <td>{{ $us->noanggota }}</td>
-                                    <td>{{ $us->notelpon }}</td>
-                                    <td>{{ $us->role }}</td>
-                                    <td>{{ $us->status }}</td>
-                                    <td>
-                                        <a href="{{ url('edit-data',$us->id) }}"><i class="fas fa-edit" style="color:blue "></i></a> 
-                                        | <a href="{{ url('delete-data',$us->id) }}"><i class="fas fa-trash-alt" style="color:red"></i></a> 
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </table>
-                        </div>
-                        
-
-                    </div>
+                    <h1 class="h3 mb-4 text-gray-800">Profil Pengguna</h1>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -110,7 +72,6 @@
         </div>
     </div>
 @include('template.script')
-@include ('sweetalert::alert')
 </body>
 
 </html>
